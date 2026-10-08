@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #F5F8FC;
+    color: #082B55;
+    -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
+  }
+}
+
+/* Enterprise Card Standard */
+.enterprise-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5EAF0;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgba(8, 43, 85, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.enterprise-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 6px -1px rgba(8, 43, 85, 0.06);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Scrollbar Hide Utility */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe Area Padding for mobile notched devices */
+.safe-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+/* Subtle Hero Pattern */
+.hero-corporate-visual {
+  background: linear-gradient(135deg, #082B55 0%, #0D3A6F 60%, #1769E0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-corporate-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(23, 105, 224, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(8, 43, 85, 0.4) 0%, transparent 55%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+  pointer-events: none;
+}
+
+/* Smooth UI Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideRight {
+  animation: slideRight 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
