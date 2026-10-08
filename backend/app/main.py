@@ -30,8 +30,9 @@ app.add_middleware(
 )
 
 # Static Uploads directory mount
-os.makedirs("./uploads/invoices", exist_ok=True)
-app.mount("/uploads", StaticFiles(directory="./uploads"), name="uploads")
+uploads_dir = "/tmp/uploads" if os.environ.get("VERCEL") else "./uploads"
+os.makedirs(os.path.join(uploads_dir, "invoices"), exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
 # Mount API Routers
 app.include_router(auth.router)

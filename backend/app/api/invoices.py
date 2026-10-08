@@ -15,7 +15,8 @@ from app.agents.workflow import agent_workflow
 
 router = APIRouter(prefix="/api/invoices", tags=["Invoices"])
 
-UPLOAD_DIR = "./uploads/invoices"
+BASE_UPLOAD_DIR = "/tmp/uploads" if os.environ.get("VERCEL") else "./uploads"
+UPLOAD_DIR = os.path.join(BASE_UPLOAD_DIR, "invoices")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @router.get("", response_model=List[InvoiceSchema])

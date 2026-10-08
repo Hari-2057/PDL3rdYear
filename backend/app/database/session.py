@@ -2,13 +2,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from app.config import settings
 
+import os
+
 # Configure engine based on SQLite vs Postgres
+db_url = settings.DATABASE_URL
+if os.environ.get("VERCEL") and db_url.startswith("sqlite:///."):
+    db_url = "sqlite:////tmp/invoiceguard.db"
+
 connect_args = {}
-if settings.DATABASE_URL.startswith("sqlite"):
+if db_url.startswith("sqlite"):
     connect_args = {"check_same_thread": False}
 
 engine = create_engine(
-    settings.DATABASE_URL,
+    db_url,
     connect_args=connect_args,
     echo=False
 )
