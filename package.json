@@ -1,0 +1,11 @@
+{
+  "name": "invoice-ai-platform",
+  "private": true,
+  "version": "1.0.0",
+  "description": "InvoiceAI - AI-Powered Multi-Agent Invoice & Expense Exception Handling Platform",
+  "scripts": {
+    "build": "npm run build --prefix frontend",
+    "dev": "npm run dev --prefix frontend",
+    "preview": "npm run preview --prefix frontend"
+  }
+}

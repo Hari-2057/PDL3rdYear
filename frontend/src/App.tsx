@@ -19,6 +19,13 @@ import {
   Invoice, PurchaseOrder, Vendor, Policy, AuditLog, AnalyticsResponse
 } from './types';
 import { apiService } from './services/api';
+import {
+  MOCK_INVOICES,
+  MOCK_VENDORS,
+  MOCK_POLICIES,
+  MOCK_ANALYTICS,
+  MOCK_AUDIT_LOGS,
+} from './services/mockData';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
@@ -29,13 +36,13 @@ export function App() {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [isAiAssistantOpen, setIsAiAssistantOpen] = useState(false);
 
-  // Platform Data
+  // Platform Data (Initialized with mock dataset, updated when backend is connected)
   const [documents, setDocuments] = useState<DocumentRow[]>(INITIAL_DOCUMENTS);
-  const [invoices, setInvoices] = useState<Invoice[]>([]);
-  const [vendors, setVendors] = useState<Vendor[]>([]);
-  const [policies, setPolicies] = useState<Policy[]>([]);
-  const [analytics, setAnalytics] = useState<AnalyticsResponse | null>(null);
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
+  const [invoices, setInvoices] = useState<Invoice[]>(MOCK_INVOICES);
+  const [vendors, setVendors] = useState<Vendor[]>(MOCK_VENDORS);
+  const [policies, setPolicies] = useState<Policy[]>(MOCK_POLICIES);
+  const [analytics, setAnalytics] = useState<AnalyticsResponse | null>(MOCK_ANALYTICS);
+  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(MOCK_AUDIT_LOGS);
 
   const loadData = async () => {
     try {
